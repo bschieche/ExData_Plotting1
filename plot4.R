@@ -24,29 +24,29 @@ data <- data %>%
 # open connection to PNG file
 png('plot4.png',width = 480, height = 480,units = "px")
 # set global plotting parameters: 2x2 plots in one window
-par(mfrow=c(2,2)
-    # fill plots rowwise
-    with(data,{
-            # Plot 1
-            plot(DateTime,Global_active_power,type="n",
-                 ylab="Global Active Power (kilowatts)",xlab="")
-            lines(DateTime,Global_active_power)
+par(mfrow=c(2,2))
+# fill plots rowwise
+with(data,{
+        # Plot 1
+        plot(DateTime,Global_active_power,type="n",
+             ylab="Global Active Power (kilowatts)",xlab="")
+        lines(DateTime,Global_active_power)
             
-            # Plot 2
-            plot(DateTime,Voltage,type="n",ylab="Voltage",xlab="datetime")
-            lines(DateTime,Voltage)
+        # Plot 2
+        plot(DateTime,Voltage,type="n",ylab="Voltage",xlab="datetime")
+        lines(DateTime,Voltage)
             
-            # Plot 3
-            plot(DateTime,Sub_metering_1,type="n",ylab = "Energy sub metering",xlab="")
-            lines(DateTime,Sub_metering_1,col="black")
-            lines(DateTime,Sub_metering_2,col="red")
-            lines(DateTime,Sub_metering_3,col="blue")
-            # get legend names by grepping for "Sub_metering"
-            legendNames <- names(data)[grep("Sub_metering",names(data))]
-            legend("topright",legendNames,col=c("black","red","blue"),lwd=2)
-            
-            # Plot 4
-            plot(DateTime,Global_reactive_power,type="n",xlab="datetime")
-            lines(DateTime,Global_reactive_power)
+        # Plot 3
+        plot(DateTime,Sub_metering_1,type="n",ylab = "Energy sub metering",xlab="")
+        lines(DateTime,Sub_metering_1,col="black")
+        lines(DateTime,Sub_metering_2,col="red")
+        lines(DateTime,Sub_metering_3,col="blue")
+        # get legend names by grepping for "Sub_metering"
+        legendNames <- names(data)[grep("Sub_metering",names(data))]
+        legend("topright",legendNames,col=c("black","red","blue"),lwd=2)
+        
+        # Plot 4
+        plot(DateTime,Global_reactive_power,type="n",xlab="datetime")
+        lines(DateTime,Global_reactive_power)
     })
-    dev.off() # close file connection
+dev.off() # close file connection
